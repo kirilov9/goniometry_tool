@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<head>
+<title>Joint Goniometry by Dr Nikola Kirilov</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<script language="javascript" src="angle.js"></script>
+<style>
+.hide { display: none; }
+.show {display: inline;}
+</style>
+</head>
+<body>
+<h1>JOINT GONIOMETRY</h1>
+<input type="checkbox" onClick="javascript:checkshow(this, 'neckangles'); initneck();"/> Neck </br> 
+<div id="neckangles" class="hide">
+<hr>
+<table align="center">
+<tr>
+<td><div id="necklabel1">Движения в шийния отдел (C)</div></td>
+<td><div id="necklabel2">Движения в шийния отдел (F)</div></td>
+<td><div id="necklabel3">Движения в шийния отдел (R)</div></td>
+</tr>
+<tr>
+<td>
+<canvas id="neck1" width="200" height="150"> canvas</canvas> </br>
+<div id="neck1div"></div></br>
+  <input onChange="javascript:changeangles('neck1','neck1_slider1','neck1_slider2',270,270,false,98,94,'C',false,false)" type="range" min="225" max="270" value="225" class="slider" id="neck1_slider1">
+  <input onChange="javascript:changeangles('neck1','neck1_slider1','neck1_slider2',270, 270, false,98,94,'C',false,false)" type="range" min="270" max="315" value="315" class="slider" id="neck1_slider2">
+</td>
+<td>
+<canvas id="neck2" width="200" height="150"> canvas</canvas> </br>
+<div id="neck2div"></div></br>
+  <input onChange="javascript:changeangles('neck2','neck2_slider1','neck2_slider2',270,270,false,103,134,'F',false,false)" type="range" min="225" max="270" value="225" class="slider" id="neck2_slider1">
+  <input onChange="javascript:changeangles('neck2','neck2_slider1','neck2_slider2',270, 270, false,103,134,'F',false,false)" type="range" min="270" max="315" value="315" class="slider" id="neck2_slider2">
+  </td>
+   <td>
+<canvas id="neck3" width="200" height="150"> canvas</canvas> </br>
+<div id="neck3div"></div></br>
+  <input onChange="javascript:changeangles('neck3','neck3_slider1','neck3_slider2',270,270,false,102,90,'R',false,false)" type="range" min="190" max="270" value="210" class="slider" id="neck3_slider1">
+  <input onChange="javascript:changeangles('neck3','neck3_slider1','neck3_slider2',270, 270, false,102,90,'R',false,false)" type="range" min="270" max="350" value="330" class="slider" id="neck3_slider2">
+  </td>
+  </tr>
+  </table>
+  <hr>
+</div>
+<input type="checkbox" onClick="javascript:checkshow(this, 'shoulderangles'); initshoulder();"/> Shoulder </br>
+<div id="shoulderangles" class="hide">
+<hr>
+<table align="center">
+<tr>
+<td><div id="shoulderlabel1">Абдукция,аддукция на раменна става, дясно</div></td>
+<td><div id="shoulderlabel2">Абдукция,аддукция на раменна става, ляво</div></td>
+<td><div id="shoulderlabel3">Повдигане напред и назаад раменна става, дясно</div></td>
+<td><div id="shoulderlabel4">Повдигане напред и назаад раменна става, ляво</div></td>
+</tr>
+<tr>
+<td>
+<canvas id="shoulder1" width="200" height="200"> canvas</canvas> </br>
+<div id="shoulder1div"></div></br>
+  <input onChange="javascript:changeangles('shoulder1','shoulder1_slider1','shoulder1_slider2',90,90,false,113,100,'F',true,false)" type="range" min="90" max="270" value="270" class="slider" id="shoulder1_slider1">
+  <input onChange="javascript:changeangles('shoulder1','shoulder1_slider1','shoulder1_slider2',90, 90, false,113,100,'F',true,false)" type="range" min="50" max="90" value="70" class="slider" id="shoulder1_slider2">
+</td>
+<td>
+<canvas id="shoulder2" width="200" height="200"> canvas</canvas> </br>
+<div id="shoulder2div"></div></br>
+  <input onChange="javascript:changeangles('shoulder2','shoulder2_slider1','shoulder2_slider2',450,450,false,86,102,'F',false,false)" type="range" min="270" max="450" value="270" class="slider" id="shoulder2_slider1">
+  <input onChange="javascript:changeangles('shoulder2','shoulder2_slider1','shoulder2_slider2',450, 450, false,86,102,'F',false,false)" type="range" min="450" max="490" value="470" class="slider" id="shoulder2_slider2">
+  </td>
+  <td>
+<canvas id="shoulder3" width="200" height="200"> canvas</canvas> </br>
+<div id="shoulder3div"></div></br>
+  <input onChange="javascript:changeangles('shoulder3','shoulder3_slider1','shoulder3_slider2',450,450,false,92,116,'C',false,true)" type="range" min="280" max="450" value="280" class="slider" id="shoulder3_slider1">
+  <input onChange="javascript:changeangles('shoulder3','shoulder3_slider1','shoulder3_slider2',450, 450, false,92,116,'C',false,true)" type="range" min="450" max="490" value="490" class="slider" id="shoulder3_slider2">
+  </td>
+  <td>
+<canvas id="shoulder4" width="200" height="200"> canvas</canvas> </br>
+<div id="shoulder4div"></div></br>
+  <input onChange="javascript:changeangles('shoulder4','shoulder4_slider1','shoulder4_slider2',90,90,false,107,115,'C',true,true)" type="range" min="90" max="260" value="260" class="slider" id="shoulder4_slider1">
+  <input onChange="javascript:changeangles('shoulder4','shoulder4_slider1','shoulder4_slider2',90, 90, false,107,115,'C',true,true)" type="range" min="50" max="90" value="50" class="slider" id="shoulder4_slider2">
+  </td>
+  </tr>
+  <tr>
+<td></td>
+<td><div id="shoulderlabel5">Ротация при абдуциран крайник 90 гр., дясно</div></td>
+<td><div id="shoulderlabel6">Ротация при абдуциран крайник 90 гр., ляво</div></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>
+<canvas id="shoulder5" width="200" height="200"> canvas</canvas> </br>
+<div id="shoulder5div"></div></br>
+  <input onChange="javascript:changeangles('shoulder5','shoulder5_slider1','shoulder5_slider2',360,360,false,53,107,'R',false,false)" type="range" min="290" max="360" value="290" class="slider" id="shoulder5_slider1">
+  <input onChange="javascript:changeangles('shoulder5','shoulder5_slider1','shoulder5_slider2',360,360,false,53,107,'R',false,false)" type="range" min="360" max="430" value="430" class="slider" id="shoulder5_slider2">
+</td>
+<td>
+<canvas id="shoulder6" width="200" height="200"> canvas</canvas> </br>
+<div id="shoulder6div"></div></br>
+  <input onChange="javascript:changeangles('shoulder6','shoulder6_slider1','shoulder6_slider2',180,180,false,143,109,'R',true,false)" type="range" min="180" max="250" value="250" class="slider" id="shoulder6_slider1">
+  <input onChange="javascript:changeangles('shoulder6','shoulder6_slider1','shoulder6_slider2',180, 180, false,143,109,'R',true,false)" type="range" min="110" max="180" value="110" class="slider" id="shoulder6_slider2">
+  </td>
+<td></td>
+  </tr>
+  <tr>
+  </table>
+  <hr>
+  </div>
+  <input type="checkbox" onClick="javascript:checkshow(this, 'elbowangles'); initelbow();"/> Elbow </br>
+<div id="elbowangles" class="hide">
+<hr>
+<table align="center">
+<tr>
+<td><div id="elbowlabel1">Флексия екстензия в лакътна става, дясно</div></td>
+<td><div id="elbowlabel2">Флексия екстензия в лакътна става, ляво</div></td>
+<td><div id="elbowlabel3">Радиоулнарна става, дясно</div></td>
+<td><div id="elbowlabel4">Радиоулнарна става, ляво</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="elbow1" width="158" height="150"> canvas</canvas> </br>
+<div id="elbow1div"></div></br>
+<input type="checkbox" id="elbow1flexc" onChange="updateflexc(this,'elbow1_flexc','elbow1_slider2');"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('elbow1','elbow1_slider1','elbow1_slider2',360,360,false,74,91,'C',false,true)" type="range" min="210" max="360" value="210" class="slider" id="elbow1_slider1">
+<input class="hide" onChange="javascript:changeangles('elbow1','elbow1_slider1','elbow1_flexc',360, 360, false,74,91,'C',false,true)" type="range" min="310" max="360" value="350" class="slider" id="elbow1_flexc"> 
+ <input onChange="javascript:changeangles('elbow1','elbow1_slider1','elbow1_slider2',360, 360, false,74,91,'C',false,true)" type="range" min="360" max="370" value="370" class="slider" id="elbow1_slider2">
+  </td>
+   <td>
+<canvas id="elbow2" width="158" height="150"> canvas</canvas> </br>
+<div id="elbow2div"></div></br>
+<input type="checkbox" id="elbow2flexc" onChange="updateflexc(this,'elbow2_flexc','elbow2_slider1');"/> флексионна контрактура </br>
+<input class="hide" onChange="javascript:changeangles('elbow2','elbow2_flexc','elbow2_slider2',180,180,false,83,92,'C',false,false)" type="range" min="180" max="240" value="210"  class="slider" id="elbow2_flexc">
+  <input onChange="javascript:changeangles('elbow2','elbow2_slider1','elbow2_slider2',180,180,false,83,92,'C',false,false)" type="range" min="170" max="180" value="170" class="slider" id="elbow2_slider1">
+  <input onChange="javascript:changeangles('elbow2','elbow2_slider1','elbow2_slider2',180, 180, false,83,92,'C',false,false)" type="range" min="180" max="330" value="330" class="slider" id="elbow2_slider2">
+  </td>
+   <td>
+<canvas id="elbow3" width="150" height="150"> canvas</canvas> </br>
+<div id="elbow3div"></div></br>
+  <input onChange="javascript:changeangles('elbow3','elbow3_slider1','elbow3_slider2',270,270,false,67,88,'R',false,false)" type="range" min="180" max="270" value="180" class="slider" id="elbow3_slider1">
+  <input onChange="javascript:changeangles('elbow3','elbow3_slider1','elbow3_slider2',270, 270, false,67,88,'R',false,false)" type="range" min="270" max="360" value="360" class="slider" id="elbow3_slider2">
+  </td>
+   <td>
+<canvas id="elbow4" width="150" height="150"> canvas</canvas> </br>
+<div id="elbow4div"></div></br>
+  <input onChange="javascript:changeangles('elbow4','elbow4_slider1','elbow4_slider2',270,270,false,83,88,'R',false,false)" type="range" min="180" max="270" value="180" class="slider" id="elbow4_slider1">
+  <input onChange="javascript:changeangles('elbow4','elbow4_slider1','elbow4_slider2',270, 270, false,83,88,'R',false,false)" type="range" min="270" max="360" value="360" class="slider" id="elbow4_slider2">
+  </td>
+  </tr>
+  </table>
+  <hr>
+</div>
+  <input type="checkbox" onClick="javascript:checkshow(this, 'hipаngles'); inithip();"/> Hip </br>
+<div id="hipаngles" class="hide">
+<hr>
+<table align="center">
+<tr>
+<td><div id="hiplabel1">Флексия екстензия в тазобедрена става, дясно</div></td>
+<td><div id="hiplabel2">Флексия екстензия в тазобедрена става, ляво</div></td>
+<td><div id="hiplabel3">Аб-/Аддукция в тазобедрена става, дясно</div></td>
+<td><div id="hiplabel4">Аб-/Аддукция в тазобедрена става, ляво</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="hip1" width="200" height="150"> canvas</canvas> </br>
+<div id="hip1div"></div></br>
+<input type="checkbox" id="hip1flexc" onChange="updateflexc(this,'hip1_flexc','hip1_slider1');"/> флексионна контрактура </br>
+<input class="hide" onChange="javascript:changeangles('hip1','hip1_flexc','hip1_slider2',180,180,false,103,88,'C',false,false)" type="range" min="180" max="230" value="210" class="slider" id="hip1_flexc">
+  <input onChange="javascript:changeangles('hip1','hip1_slider1','hip1_slider2',180,180,false,103,88,'C',false,false)" type="range" min="170" max="180" value="180" class="slider" id="hip1_slider1">
+  <input onChange="javascript:changeangles('hip1','hip1_slider1','hip1_slider2',180, 180, false,103,88,'C',false,false)" type="range" min="180" max="320" value="320" class="slider" id="hip1_slider2">
+  </td>
+   <td>
+<canvas id="hip2" width="200" height="150"> canvas</canvas> </br>
+<div id="hip2div"></div></br>
+<input type="checkbox" id="hip2flexc" onChange="updateflexc(this,'hip2_flexc','hip2_slider2');"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('hip2','hip2_slider1','hip2_slider2',360,360,false,105,97,'C',false,true)" type="range" min="220" max="360" value="220" class="slider" id="hip2_slider1">
+  <input class="hide" onChange="javascript:changeangles('hip2','hip2_slider1','hip2_flexc',360, 360, false,105,97,'C',false,true)" type="range" min="310" max="360" value="350" class="slider" id="hip2_flexc">
+
+  <input onChange="javascript:changeangles('hip2','hip2_slider1','hip2_slider2',360, 360, false,105,97,'C',false,true)" type="range" min="360" max="370" value="360" class="slider" id="hip2_slider2">
+  </td>
+   <td>
+<canvas id="hip3" width="200" height="150"> canvas</canvas> </br>
+<div id="hip3div"></div></br>
+  <input onChange="javascript:changeangles('hip3','hip3_slider1','hip3_slider2',90,90,false,106,25,'F',true,false)" type="range" min="90" max="140" value="140" class="slider" id="hip3_slider1">
+  <input onChange="javascript:changeangles('hip3','hip3_slider1','hip3_slider2',90, 90, false,106,25,'F',true,false)" type="range" min="60" max="90" value="60" class="slider" id="hip3_slider2">
+  </td>
+     <td>
+<canvas id="hip4" width="200" height="150"> canvas</canvas> </br>
+<div id="hip4div"></div></br>
+  <input onChange="javascript:changeangles('hip4','hip4_slider1','hip4_slider2',90,90,false,63,27,'F',true,true)" type="range" min="90" max="120" value="120" class="slider" id="hip4_slider1">
+  <input onChange="javascript:changeangles('hip4','hip4_slider1','hip4_slider2',90, 90, false,63,27,'F',true,true)" type="range" min="40" max="90" value="40" class="slider" id="hip4_slider2">
+  </td>
+  </tr>
+  <tr>
+<td></td>
+<td><div id="hiplabel5">Външна/вътрешна ротация в тазобедрена става, дясно</div></td>
+<td><div id="hiplabel6">Външна/вътрешна ротация в тазобедрена става, ляво</div></td>
+<td></td>
+</tr>
+<td></td>
+<td>
+<canvas id="hip5" width="200" height="150"> canvas</canvas> </br>
+<div id="hip5div"></div></br>
+  <input onChange="javascript:changeangles('hip5','hip5_slider1','hip5_slider2',90,90,false,106,25,'R',true,false)" type="range" min="90" max="135" value="135" class="slider" id="hip5_slider1">
+  <input onChange="javascript:changeangles('hip5','hip5_slider1','hip5_slider2',90, 90, false,106,25,'R',true,false)" type="range" min="40" max="90" value="40" class="slider" id="hip5_slider2">
+  </td>
+  <td>
+<canvas id="hip6" width="200" height="150"> canvas</canvas> </br>
+<div id="hip6div"></div></br>
+  <input onChange="javascript:changeangles('hip6','hip6_slider1','hip6_slider2',90,90,false,94,25,'R',true,true)" type="range" min="90" max="140" value="140" class="slider" id="hip6_slider1">
+  <input onChange="javascript:changeangles('hip6','hip6_slider1','hip6_slider2',90, 90, false,94,25,'R',true,true)" type="range" min="45" max="90" value="45" class="slider" id="hip6_slider2">
+  </td>
+<td></td>
+<tr>
+</tr>
+  </table>
+  <hr>
+</div>
+  <input type="checkbox" onClick="javascript:checkshow(this, 'kneeаngles'); initknee();"/> Knee </br>
+<div id="kneeаngles" class="hide">
+<hr>
+<table align="center">
+<tr>
+<td><div id="kneelabel1">Колянна става флексия/екстензия, дясно</div></td>
+<td><div id="kneelabel2">Колянна става флексия/екстензия, ляво</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="knee1" width="200" height="150"> canvas</canvas> </br>
+<div id="knee1div"></div></br>
+<input type="checkbox" id="knee1flexc" onChange="updateflexc(this,'knee1_flexc','knee1_slider2');"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('knee1','knee1_slider1','knee1_slider2',360,360,false,76,46,'C',true,true)" type="range" min="360" max="510" value="490" class="slider" id="knee1_slider1">
+  <input class="hide" onChange="javascript:changeangles('knee1','knee1_slider1','knee1_flexc',360, 360, false,76,46,'C',true,true)" type="range" min="360" max="410" value="360" class="slider" id="knee1_flexc">
+  <input onChange="javascript:changeangles('knee1','knee1_slider1','knee1_slider2',360, 360, false,76,46,'C',true,true)" type="range" min="350" max="360" value="360" class="slider" id="knee1_slider2">
+   <td>
+<canvas id="knee2" width="200" height="150"> canvas</canvas> </br>
+<div id="knee2div"></div></br>
+<input type="checkbox" id="knee2flexc" onChange="updateflexc(this,'knee2_flexc','knee2_slider2');"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('knee2','knee2_slider1','knee2_slider2',360,360,false,76,46,'C',true,true)" type="range" min="360" max="510" value="490" class="slider" id="knee2_slider1">
+  <input class="hide" onChange="javascript:changeangles('knee2','knee2_slider1','knee2_flexc',360, 360, false,76,46,'C',true,true)" type="range" min="360" max="410" value="360" class="slider" id="knee2_flexc">
+  <input onChange="javascript:changeangles('knee2','knee2_slider1','knee2_slider2',360, 360, false,76,46,'C',true,true)" type="range" min="350" max="360" value="360" class="slider" id="knee2_slider2">
+  </td>
+</tr>
+</table>
+<hr>
+</div>
+<input type="checkbox" onClick="javascript:checkshow(this,'ankleangles'); initankle();"/> Ankle </br>
+<div id="ankleangles" class="hide">
+<hr>
+<table align="center">
+<tr>
+<td><div id="kneelabel1">Плантарна флексия, дорзална екстензия, дясно</div></td>
+<td><div id="kneelabel2">Плантарна флексия, дорзална екстензия, ляво</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="ankle1" width="200" height="105"> canvas</canvas> </br>
+<div id="ankle1div"></div></br>
+  <input onChange="javascript:changeangles('ankle1','ankle1_slider1','ankle1_slider2',315,315,false,100,90,'C')" type="range" min="285" max="315" value="275" class="slider" id="ankle1_slider1">
+  <input onChange="javascript:changeangles('ankle1','ankle1_slider1','ankle1_slider2',315, 315, false,100,90,'C')" type="range" min="315" max="365" value="355" class="slider" id="ankle1_slider2">
+</td>
+<td>
+<canvas id="ankle2" width="200" height="105"> canvas</canvas> </br>
+<div id="ankle2div"></div></br>
+  <input onChange="javascript:changeangles('ankle2','ankle2_slider1','ankle2_slider2',315,315,false,100,90,'C')" type="range" min="285" max="315" value="275" class="slider" id="ankle2_slider1">
+  <input onChange="javascript:changeangles('ankle2','ankle2_slider1','ankle2_slider2',315, 315, false,100,90,'C')" type="range" min="315" max="365" value="355" class="slider" id="ankle2_slider2">
+</td>
+</tr>
+</table>
+<hr>
+  </div>
+  <input type="checkbox" onClick="javascript:checkshow(this,'wristangles'); initwrist();"/> Wrist </br>
+<div id="wristangles" class="hide">
+<hr>
+<table align="center">
+<tr>
+<td><div id="wristlabel1">Радиална/улнарна дукция дясно</div></td>
+<td><div id="wristlabel2">Флексия/екстензия дясно</div></td>
+<td><div id="wristlabel3">Радиална/улнарна дукция ляво</div></td>
+<td><div id="wristlabel4">Флексия/екстензия ляво</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="wrist1" width="200" height="200"> canvas</canvas> </br>
+<div id="wrist1div"></div></br>
+  <input onChange="javascript:changeangles('wrist1','wrist1_slider1','wrist1_slider2',270,270,false,100,166,'F')" type="range" min="240" max="270" value="245" class="slider" id="wrist1_slider1">
+  <input onChange="javascript:changeangles('wrist1','wrist1_slider1','wrist1_slider2',270, 270, false,100,166,'F')" type="range" min="270" max="310" value="300" class="slider" id="wrist1_slider2">
+</td>
+
+ <td>
+<canvas id="wrist2" width="200" height="200"> canvas</canvas> </br>
+<div id="wrist2div"></div></br>
+  <input onChange="javascript:changeangles('wrist2','wrist2_slider1','wrist2_slider2',360,360,false,9,92,'C')" type="range" min="270" max="360" value="300" class="slider" id="wrist2_slider1">
+  <input onChange="javascript:changeangles('wrist2','wrist2_slider1','wrist2_slider2',360, 360, false,9,92,'C')" type="range" min="360" max="440" value="420" class="slider" id="wrist2_slider2">
+</td>
+ <td>
+<canvas id="wrist3" width="200" height="200"> canvas</canvas> </br>
+<div id="wrist3div"></div></br>
+  <input onChange="javascript:changeangles('wrist3','wrist3_slider1','wrist3_slider2',270,270,false,100,166,'F',false,true)" type="range" min="230" max="270" value="240" class="slider" id="wrist3_slider1">
+  <input onChange="javascript:changeangles('wrist3','wrist3_slider1','wrist3_slider2',270, 270, false,100,166,'F',false,true)" type="range" min="270" max="300" value="295" class="slider" id="wrist3_slider2">
+</td>
+ <td>
+<canvas id="wrist4" width="200" height="200"> canvas</canvas> </br>
+<div id="wrist4div"></div></br>
+  <input onChange="javascript:changeangles('wrist4','wrist4_slider1','wrist4_slider2',360,360,false,9,92,'C')" type="range" min="270" max="360" value="300" class="slider" id="wrist4_slider1">
+  <input onChange="javascript:changeangles('wrist4','wrist4_slider1','wrist4_slider2',360, 360, false,9,92,'C')" type="range" min="360" max="440" value="420" class="slider" id="wrist4_slider2">
+</td>
+</tr>
+</table>
+<hr>
+  </div>
+  
+    <input type="checkbox" onClick="javascript:checkshow(this,'mcpangles'); initmcp();"/> Metacarpophalangeal joints</br>
+<div id="mcpangles" class="hide">
+<hr>
+<table align="center">
+<tr>
+<td><div id="mcp2rlabel1">МКФ II дясно</div></td>
+<td><div id="mcp3rlabel2">МКФ III дясно</div></td>
+<td><div id="mcp4rlabel3">МКФ IV дясно</div></td>
+<td><div id="mcp5rlabel4">МКФ V дясно</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="mcp2r" width="200" height="150"> canvas</canvas> </br>
+<div id="mcp2rdiv"></div></br>
+<input type="checkbox" id="mcp2rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('mcp2r','mcp2r_slider1','mcp2r_slider2',360,360,false,92,57,'C',true,true)" type="range" min="360" max="450" value="450" class="slider" id="mcp2r_slider1">
+  <input onChange="javascript:changeangles('mcp2r','mcp2r_slider1','mcp2r_slider2',360, 360, false,92,57,'C',true,true)" type="range" min="330" max="450" value="360" class="slider" id="mcp2r_slider2">
+</td>
+ <td>
+<canvas id="mcp3r" width="200" height="150"> canvas</canvas> </br>
+<div id="mcp3rdiv"></div></br>
+<input type="checkbox" id="mcp3rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('mcp3r','mcp3r_slider1','mcp3r_slider2',360,360,false,92,57,'C',true,true)" type="range" min="360" max="450" value="450" class="slider" id="mcp3r_slider1">
+  <input onChange="javascript:changeangles('mcp3r','mcp3r_slider1','mcp3r_slider2',360, 360, false,92,57,'C',true,true)" type="range" min="330" max="450" value="360" class="slider" id="mcp3r_slider2">
+</td>
+ <td>
+<canvas id="mcp4r" width="200" height="150"> canvas</canvas> </br>
+<div id="mcp4rdiv"></div></br>
+<input type="checkbox" id="mcp4rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('mcp4r','mcp4r_slider1','mcp4r_slider2',360,360,false,92,57,'C',true,true)" type="range" min="360" max="450" value="450" class="slider" id="mcp4r_slider1">
+  <input onChange="javascript:changeangles('mcp4r','mcp4r_slider1','mcp4r_slider2',360, 360, false,92,57,'C',true,true)" type="range" min="330" max="450" value="360" class="slider" id="mcp4r_slider2">
+</td>
+  <td>
+<canvas id="mcp5r" width="200" height="150"> canvas</canvas> </br>
+<div id="mcp5rdiv"></div></br>
+<input type="checkbox" id="mcp5rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('mcp5r','mcp5r_slider1','mcp5r_slider2',360,360,false,92,57,'C',true,true)" type="range" min="360" max="450" value="450" class="slider" id="mcp5r_slider1">
+  <input onChange="javascript:changeangles('mcp5r','mcp5r_slider1','mcp5r_slider2',360, 360, false,92,57,'C',true,true)" type="range" min="330" max="450" value="360" class="slider" id="mcp5r_slider2">
+</td>
+</tr>
+<tr>
+<td><div id="mcp2llabel1">МКФ II ляво</div></td>
+<td><div id="mcp3llabel2">МКФ III ляво</div></td>
+<td><div id="mcp4llabel3">МКФ IV ляво</div></td>
+<td><div id="mcp5llabel4">МКФ V ляво</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="mcp2l" width="200" height="150"> canvas</canvas> </br>
+<div id="mcp2ldiv"></div></br>
+<input type="checkbox" id="mcp2lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('mcp2l','mcp2l_slider1','mcp2l_slider2',360,360,false,92,57,'C',true,true)" type="range" min="360" max="450" value="450" class="slider" id="mcp2l_slider1">
+  <input onChange="javascript:changeangles('mcp2l','mcp2l_slider1','mcp2l_slider2',360, 360, false,92,57,'C',true,true)" type="range" min="330" max="450" value="360" class="slider" id="mcp2l_slider2">
+</td>
+ <td>
+<canvas id="mcp3l" width="200" height="150"> canvas</canvas> </br>
+<div id="mcp3ldiv"></div></br>
+<input type="checkbox" id="mcp3lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('mcp3l','mcp3l_slider1','mcp3l_slider2',360,360,false,92,57,'C',true,true)" type="range" min="360" max="450" value="450" class="slider" id="mcp3l_slider1">
+  <input onChange="javascript:changeangles('mcp3l','mcp3l_slider1','mcp3l_slider2',360, 360, false,92,57,'C',true,true)" type="range" min="330" max="450" value="360" class="slider" id="mcp3l_slider2">
+</td>
+ <td>
+<canvas id="mcp4l" width="200" height="150"> canvas</canvas> </br>
+<div id="mcp4ldiv"></div></br>
+<input type="checkbox" id="mcp4lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('mcp4l','mcp4l_slider1','mcp4l_slider2',360,360,false,92,57,'C',true,true)" type="range" min="360" max="450" value="450" class="slider" id="mcp4l_slider1">
+  <input onChange="javascript:changeangles('mcp4l','mcp4l_slider1','mcp4l_slider2',360, 360, false,92,57,'C',true,true)" type="range" min="330" max="450" value="360" class="slider" id="mcp4l_slider2">
+</td>
+  <td>
+<canvas id="mcp5l" width="200" height="150"> canvas</canvas> </br>
+<div id="mcp5ldiv"></div></br>
+<input type="checkbox" id="mcp5lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('mcp5l','mcp5l_slider1','mcp5l_slider2',360,360,false,92,57,'C',true,true)" type="range" min="360" max="450" value="450" class="slider" id="mcp5l_slider1">
+  <input onChange="javascript:changeangles('mcp5l','mcp5l_slider1','mcp5l_slider2',360, 360, false,92,57,'C',true,true)" type="range" min="330" max="450" value="360" class="slider" id="mcp5l_slider2">
+</td>
+</tr>
+</table>
+<hr>
+  </div>
+         <input type="checkbox" onClick="javascript:checkshow(this,'pifsangles'); initpifs();"/> Proximal interphalangeal joints </br>
+<div id="pifsangles" class="hide">
+<hr>
+<table align="center">
+<tr>
+<td><div id="pifs2rlabel1">ПИФС II дясно</div></td>
+<td><div id="pifs3rlabel2">ПИФС III дясно</div></td>
+<td><div id="pifs4rlabel3">ПИФС IV дясно</div></td>
+<td><div id="pifs5rlabel4">ПИФС V дясно</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="pifs2r" width="200" height="150"> canvas</canvas> </br>
+<div id="pifs2rdiv"></div></br>
+<input type="checkbox" id="pifs2rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('pifs2r','pifs2r_slider1','pifs2r_slider2',360,360,false,120,31,'C',true,true)" type="range" min="360" max="460" value="460" class="slider" id="pifs2r_slider1">
+  <input onChange="javascript:changeangles('pifs2r','pifs2r_slider1','pifs2r_slider2',360, 360, false,120,31,'C',true,true)" type="range" min="330" max="460" value="360" class="slider" id="pifs2r_slider2">
+</td>
+ <td>
+<canvas id="pifs3r" width="200" height="150"> canvas</canvas> </br>
+<div id="pifs3rdiv"></div></br>
+<input type="checkbox" id="pifs3rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('pifs3r','pifs3r_slider1','pifs3r_slider2',360,360,false,120,31,'C',true,true)" type="range" min="360" max="460" value="460" class="slider" id="pifs3r_slider1">
+  <input onChange="javascript:changeangles('pifs3r','pifs3r_slider1','pifs3r_slider2',360, 360, false,120,31,'C',true,true)" type="range" min="330" max="460" value="360" class="slider" id="pifs3r_slider2">
+</td>
+ <td>
+<canvas id="pifs4r" width="200" height="150"> canvas</canvas> </br>
+<div id="pifs4rdiv"></div></br>
+<input type="checkbox" id="pifs4rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('pifs4r','pifs4r_slider1','pifs4r_slider2',360,360,false,120,31,'C',true,true)" type="range" min="360" max="460" value="460" class="slider" id="pifs4r_slider1">
+  <input onChange="javascript:changeangles('pifs4r','pifs4r_slider1','pifs4r_slider2',360, 360, false,120,31,'C',true,true)" type="range" min="330" max="460" value="360" class="slider" id="pifs4r_slider2">
+</td>
+  <td>
+<canvas id="pifs5r" width="200" height="150"> canvas</canvas> </br>
+<div id="pifs5rdiv"></div></br>
+<input type="checkbox" id="pifs5rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('pifs5r','pifs5r_slider1','pifs5r_slider2',360,360,false,120,31,'C',true,true)" type="range" min="360" max="460" value="460" class="slider" id="pifs5r_slider1">
+  <input onChange="javascript:changeangles('pifs5r','pifs5r_slider1','pifs5r_slider2',360, 360, false,120,31,'C',true,true)" type="range" min="330" max="460" value="360" class="slider" id="pifs5r_slider2">
+</td>
+</tr>
+<tr>
+<td><div id="pifs2llabel1">ПИФС II ляво</div></td>
+<td><div id="pifs3llabel2">ПИФС III ляво</div></td>
+<td><div id="pifs4llabel3">ПИФС IV ляво</div></td>
+<td><div id="pifs5llabel4">ПИФС V ляво</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="pifs2l" width="200" height="150"> canvas</canvas> </br>
+<div id="pifs2ldiv"></div></br>
+<input type="checkbox" id="pifs2lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('pifs2l','pifs2l_slider1','pifs2l_slider2',360,360,false,120,31,'C',true,true)" type="range" min="360" max="460" value="460" class="slider" id="pifs2l_slider1">
+  <input onChange="javascript:changeangles('pifs2l','pifs2l_slider1','pifs2l_slider2',360, 360, false,120,31,'C',true,true)" type="range" min="330" max="460" value="360" class="slider" id="pifs2l_slider2">
+</td>
+ <td>
+<canvas id="pifs3l" width="200" height="150"> canvas</canvas> </br>
+<div id="pifs3ldiv"></div></br>
+<input type="checkbox" id="pifs3lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('pifs3l','pifs3l_slider1','pifs3l_slider2',360,360,false,120,31,'C',true,true)" type="range" min="360" max="460" value="460" class="slider" id="pifs3l_slider1">
+  <input onChange="javascript:changeangles('pifs3l','pifs3l_slider1','pifs3l_slider2',360, 360, false,120,31,'C',true,true)" type="range" min="330" max="460" value="360" class="slider" id="pifs3l_slider2">
+</td>
+ <td>
+<canvas id="pifs4l" width="200" height="150"> canvas</canvas> </br>
+<div id="pifs4ldiv"></div></br>
+<input type="checkbox" id="pifs4lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('pifs4l','pifs4l_slider1','pifs4l_slider2',360,360,false,120,31,'C',true,true)" type="range" min="360" max="460" value="460" class="slider" id="pifs4l_slider1">
+  <input onChange="javascript:changeangles('pifs4l','pifs4l_slider1','pifs4l_slider2',360, 360, false,120,31,'C',true,true)" type="range" min="330" max="460" value="360" class="slider" id="pifs4l_slider2">
+</td>
+  <td>
+<canvas id="pifs5l" width="200" height="150"> canvas</canvas> </br>
+<div id="pifs5ldiv"></div></br>
+<input type="checkbox" id="pifs5lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('pifs5l','pifs5l_slider1','pifs5l_slider2',360,360,false,120,31,'C',true,true)" type="range" min="360" max="460" value="460" class="slider" id="pifs5l_slider1">
+  <input onChange="javascript:changeangles('pifs5l','pifs5l_slider1','pifs5l_slider2',360, 360, false,120,31,'C',true,true)" type="range" min="330" max="460" value="360" class="slider" id="pifs5l_slider2">
+</td>
+</tr>
+</table>
+<hr>
+  </div>
+    <input type="checkbox" onClick="javascript:checkshow(this,'difsangles'); initdifs();"/> Distal interphalangeal joints </br>
+<div id="difsangles" class="hide">
+<hr>
+<table align="center">
+<tr>
+<td><div id="difs2rlabel1">ДИФС II дясно</div></td>
+<td><div id="difs3rlabel2">ДИФС III дясно</div></td>
+<td><div id="difs4rlabel3">ДИФС IV дясно</div></td>
+<td><div id="difs5rlabel4">ДИФС V дясно</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="difs2r" width="200" height="150"> canvas</canvas> </br>
+<div id="difs2rdiv"></div></br>
+<input type="checkbox" id="difs2rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('difs2r','difs2r_slider1','difs2r_slider2',470,470,false,115,58,'C',true,true)" type="range" min="470" max="560" value="560" class="slider" id="difs2r_slider1">
+  <input onChange="javascript:changeangles('difs2r','difs2r_slider1','difs2r_slider2',470, 470, false,115,58,'C',true,true)" type="range" min="470" max="560" value="470" class="slider" id="difs2r_slider2">
+</td>
+ <td>
+<canvas id="difs3r" width="200" height="150"> canvas</canvas> </br>
+<div id="difs3rdiv"></div></br>
+<input type="checkbox" id="difs3rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('difs3r','difs3r_slider1','difs3r_slider2',470,470,false,115,58,'C',true,true)" type="range" min="470" max="560" value="560" class="slider" id="difs3r_slider1">
+  <input onChange="javascript:changeangles('difs3r','difs3r_slider1','difs3r_slider2',470, 470, false,115,58,'C',true,true)" type="range" min="470" max="560" value="470" class="slider" id="difs3r_slider2">
+</td>
+ <td>
+<canvas id="difs4r" width="200" height="150"> canvas</canvas> </br>
+<div id="difs4rdiv"></div></br>
+<input type="checkbox" id="difs4rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('difs4r','difs4r_slider1','difs4r_slider2',470,470,false,115,58,'C',true,true)" type="range" min="470" max="560" value="560" class="slider" id="difs4r_slider1">
+  <input onChange="javascript:changeangles('difs4r','difs4r_slider1','difs4r_slider2',470, 470, false,115,58,'C',true,true)" type="range" min="470" max="560" value="470" class="slider" id="difs4r_slider2">
+</td>
+  <td>
+<canvas id="difs5r" width="200" height="150"> canvas</canvas> </br>
+<div id="difs5rdiv"></div></br>
+<input type="checkbox" id="difs5rflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('difs5r','difs5r_slider1','difs5r_slider2',470,470,false,115,58,'C',true,true)" type="range" min="470" max="560" value="560" class="slider" id="difs5r_slider1">
+  <input onChange="javascript:changeangles('difs5r','difs5r_slider1','difs5r_slider2',470, 470, false,115,58,'C',true,true)" type="range" min="470" max="560" value="470" class="slider" id="difs5r_slider2">
+</td>
+</tr>
+<tr>
+<td><div id="difs2llabel1">ДИФС II ляво</div></td>
+<td><div id="difs3llabel2">ДИФС III ляво</div></td>
+<td><div id="difs4llabel3">ДИФС IV ляво</div></td>
+<td><div id="difs5llabel4">ДИФС V ляво</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="difs2l" width="200" height="150"> canvas</canvas> </br>
+<div id="difs2ldiv"></div></br>
+<input type="checkbox" id="difs2lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('difs2l','difs2l_slider1','difs2l_slider2',470,470,false,115,58,'C',true,true)" type="range" min="470" max="560" value="560" class="slider" id="difs2l_slider1">
+  <input onChange="javascript:changeangles('difs2l','difs2l_slider1','difs2l_slider2',470, 470, false,115,58,'C',true,true)" type="range" min="470" max="560" value="470" class="slider" id="difs2l_slider2">
+</td>
+ <td>
+<canvas id="difs3l" width="200" height="150"> canvas</canvas> </br>
+<div id="difs3ldiv"></div></br>
+<input type="checkbox" id="difs3lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('difs3l','difs3l_slider1','difs3l_slider2',470,470,false,115,58,'C',true,true)" type="range" min="470" max="560" value="560" class="slider" id="difs3l_slider1">
+  <input onChange="javascript:changeangles('difs3l','difs3l_slider1','difs3l_slider2',470, 470, false,115,58,'C',true,true)" type="range" min="470" max="560" value="470" class="slider" id="difs3l_slider2">
+</td>
+ <td>
+<canvas id="difs4l" width="200" height="150"> canvas</canvas> </br>
+<div id="difs4ldiv"></div></br>
+<input type="checkbox" id="difs4lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('difs4l','difs4l_slider1','difs4l_slider2',470,470,false,115,58,'C',true,true)" type="range" min="470" max="560" value="560" class="slider" id="difs4l_slider1">
+  <input onChange="javascript:changeangles('difs4l','difs4l_slider1','difs4l_slider2',470, 470, false,115,58,'C',true,true)" type="range" min="470" max="560" value="470" class="slider" id="difs4l_slider2">
+</td>
+  <td>
+<canvas id="difs5l" width="200" height="150"> canvas</canvas> </br>
+<div id="difs5ldiv"></div></br>
+<input type="checkbox" id="difs5lflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('difs5l','difs5l_slider1','difs5l_slider2',470,470,false,115,58,'C',true,true)" type="range" min="470" max="560" value="560" class="slider" id="difs5l_slider1">
+  <input onChange="javascript:changeangles('difs5l','difs5l_slider1','difs5l_slider2',470, 470, false,115,58,'C',true,true)" type="range" min="470" max="560" value="470" class="slider" id="difs5l_slider2">
+</td>
+</tr>
+</table></div>
+ <input type="checkbox" onClick="javascript:checkshow(this,'thumbangles'); initthumb();"/> Thumb </br>
+<div id="thumbangles" class="hide">
+<hr>
+<table align="center">
+<tr>
+<td><div id="thumbmcprlabel1">МКФ I дясно</div></td>
+<td><div id="thumbmcpllabel2">МКФ I ляво</div></td>
+<td><div id="thumbiprlabel3">ИФ дясно</div></td>
+<td><div id="thumbipllabel4">ИФ ляво</div></td>
+</tr>
+<tr>
+ <td>
+<canvas id="thumbmcpr" width="200" height="200"> canvas</canvas> </br>
+<div id="thumbmcprdiv"></div></br>
+<input type="checkbox" id="thumbmcprflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('thumbmcpr','thumbmcpr_slider1','thumbmcpr_slider2',290,290,false,89,148,'C',false,true)" type="range" min="240" max="290" value="240" class="slider" id="thumbmcpr_slider1">
+  <input onChange="javascript:changeangles('thumbmcpr','thumbmcpr_slider1','thumbmcpr_slider2',290, 290, false,89,148,'C',false,true)" type="range" min="240" max="290" value="290" class="slider" id="thumbmcpr_slider2">
+</td>
+ <td>
+<canvas id="thumbmcpl" width="200" height="200"> canvas</canvas> </br>
+<div id="thumbmcpldiv"></div></br>
+<input type="checkbox" id="thumbmcplflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('thumbmcpl','thumbmcpl_slider1','thumbmcpl_slider2',250,250,false,46,147,'C',true,true)" type="range" min="250" max="300" value="300" class="slider" id="thumbmcpl_slider1">
+  <input onChange="javascript:changeangles('thumbmcpl','thumbmcpl_slider1','thumbmcpl_slider2',250,250, false,46,147,'C',true,true)" type="range" min="250" max="300" value="250" class="slider" id="thumbmcpl_slider2">
+</td>
+ <td>
+<canvas id="thumbipr" width="200" height="150"> canvas</canvas> </br>
+<div id="thumbiprdiv"></div></br>
+<input type="checkbox" id="thumbiprflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('thumbipr','thumbipr_slider1','thumbipr_slider2',180,180,false,92,57,'C',false,true)" type="range" min="100" max="180" value="100" class="slider" id="thumbipr_slider1">
+  <input onChange="javascript:changeangles('thumbipr','thumbipr_slider1','thumbipr_slider2',180,180, false,92,57,'C',false,true)" type="range" min="100" max="180" value="180" class="slider" id="thumbipr_slider2">
+</td>
+  <td>
+<canvas id="thumbipl" width="200" height="150"> canvas</canvas> </br>
+<div id="thumbipldiv"></div></br>
+<input type="checkbox" id="thumbiplflexc"/> флексионна контрактура </br>
+  <input onChange="javascript:changeangles('thumbipl','thumbipl_slider1','thumbipl_slider2',180,180,false,92,57,'C',false,true)" type="range" min="100" max="180" value="100" class="slider" id="thumbipl_slider1">
+  <input onChange="javascript:changeangles('thumbipl','thumbipl_slider1','thumbipl_slider2',180,180, false,92,57,'C',false,true)" type="range" min="100" max="180" value="180" class="slider" id="thumbipl_slider2">
+</td>
+</tr>
+</table></div>
+</br><input type="submit" onClick="javascript:updyglometriq();" value="GENERATE" class="submit"/></br></br>
+<div id="uglometriqresult"></div>
+</body>
